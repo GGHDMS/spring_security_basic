@@ -1,10 +1,9 @@
-package io.security.spring_security_basic;
+package io.security.spring_security_basic.basic;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class SecurityController {
+//@RestController
+public class SecurityBasicController {
 
     @GetMapping("/")
     public String index() {
