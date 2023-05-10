@@ -1,35 +1,24 @@
 package io.security.spring_security_basic;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Configuration
 @EnableWebSecurity
-@Order(0) // order 에 따라 matcher 확인
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .antMatcher("/admin/**")
                 .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
-    }
-}
+                .anyRequest().authenticated();
 
-@Configuration
-@Order(1)
-class SecurityConfig2 extends WebSecurityConfigurerAdapter {
-
-    protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .anyRequest().permitAll()
-                .and()
-                .formLogin();
+                .formLogin()
+        ;
+
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
 }

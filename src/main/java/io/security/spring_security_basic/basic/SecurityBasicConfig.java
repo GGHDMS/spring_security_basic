@@ -1,7 +1,5 @@
 package io.security.spring_security_basic.basic;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,11 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@Configuration
+//@Configuration
 //@EnableWebSecurity //웹 보안 활성화
 public class SecurityBasicConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+//    @Autowired
     UserDetailsService userDetailsService;
 
     @Override
